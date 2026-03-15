@@ -14,19 +14,62 @@ permalink: /
 - 方向二：这里填写核心研究主题
 - 方向三：这里填写核心研究主题
 
-## 网站内容导航
+## 快速入口
 
-- [课题组简介](/about/)：查看团队介绍、研究愿景和发展方向
-- [研究方向](/research/)：查看课题组当前关注的研究主题
-- [联系方式](/contact/)：查看邮箱、地址和招生信息入口
+- [课题组简介](/about/)
+- [研究方向](/research/)
+- [成员列表](/members/)
+- [新闻动态](/news/)
+- [项目介绍](/projects/)
+- [联系方式](/contact/)
 
-## 当前建设进度
+## 最新新闻
 
-这个网站的基础结构已经搭好，接下来会继续补充：
+{% assign latest_news = site.news | sort: "date" | reverse %}
+{% if latest_news.size > 0 %}
+<ul>
+{% for item in latest_news limit:3 %}
+  <li>
+    <strong><a href="{{ item.url | relative_url }}">{{ item.title }}</a></strong>
+    <br>
+    <small>{{ item.date | date: "%Y-%m-%d" }}</small>
+    <br>
+    {{ item.summary }}
+  </li>
+{% endfor %}
+</ul>
+{% else %}
+当前还没有新闻内容。
+{% endif %}
 
-- 成员信息
-- 新闻动态
-- 项目介绍
-- 更完整的首页展示
+## 成员入口
 
-如果你正在用这个模板继续开发，建议下一步优先补充真实的课题组名称、简介和研究方向。
+{% assign members = site.members | sort: "order" %}
+{% if members.size > 0 %}
+<ul>
+{% for member in members limit:3 %}
+  <li>
+    <strong><a href="{{ member.url | relative_url }}">{{ member.name }}</a></strong> - {{ member.role }}
+  </li>
+{% endfor %}
+</ul>
+<p><a href="{{ '/members/' | relative_url }}">查看全部成员</a></p>
+{% else %}
+当前还没有成员内容。
+{% endif %}
+
+## 项目概览
+
+{% assign projects = site.projects %}
+{% if projects.size > 0 %}
+<ul>
+{% for project in projects limit:3 %}
+  <li>
+    <strong><a href="{{ project.url | relative_url }}">{{ project.title }}</a></strong> - {{ project.period }}
+  </li>
+{% endfor %}
+</ul>
+<p><a href="{{ '/projects/' | relative_url }}">查看全部项目</a></p>
+{% else %}
+当前还没有项目内容。
+{% endif %}
