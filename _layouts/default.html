@@ -44,14 +44,53 @@
     <script>
       const navToggle = document.querySelector('[data-nav-toggle]');
       const navPanel = document.querySelector('[data-nav-panel]');
+      const navLinks = navPanel ? navPanel.querySelectorAll('a') : [];
+      const desktopMedia = window.matchMedia('(min-width: 901px)');
 
       if (navToggle && navPanel) {
+        const closeNav = () => {
+          navToggle.setAttribute('aria-expanded', 'false');
+          navPanel.classList.remove('is-open');
+          document.body.classList.remove('lab-body--nav-open');
+          navToggle.classList.remove('is-open');
+        };
+
         navToggle.addEventListener('click', () => {
           const expanded = navToggle.getAttribute('aria-expanded') === 'true';
           navToggle.setAttribute('aria-expanded', String(!expanded));
           navPanel.classList.toggle('is-open');
+          document.body.classList.toggle('lab-body--nav-open', !expanded);
+          navToggle.classList.toggle('is-open', !expanded);
         });
+
+        navLinks.forEach((link) => {
+          link.addEventListener('click', closeNav);
+        });
+
+        document.addEventListener('click', (event) => {
+          if (!navPanel.classList.contains('is-open')) {
+            return;
+          }
+
+          const clickedInsideNav = navPanel.contains(event.target) || navToggle.contains(event.target);
+          if (!clickedInsideNav) {
+            closeNav();
+          }
+        });
+
+        const handleViewportChange = (event) => {
+          if (event.matches) {
+            closeNav();
+          }
+        };
+
+        if (desktopMedia.addEventListener) {
+          desktopMedia.addEventListener('change', handleViewportChange);
+        } else if (desktopMedia.addListener) {
+          desktopMedia.addListener(handleViewportChange);
+        }
       }
     </script>
   </body>
 </html>
+
