@@ -1,0 +1,35 @@
+<header class="site-shell" role="banner">
+  <div class="site-shell__meta">
+    <div class="wrapper site-shell__meta-inner">
+      <div class="site-shell__meta-left">
+        <span>Wuhan University</span>
+        <span>School of History</span>
+      </div>
+      <div class="site-shell__meta-right">
+        <a href="{{ '/contact/' | relative_url }}">Contact</a>
+        <span>{{ site.github_username }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper site-shell__main">
+    <a class="site-brand" rel="author" href="{{ '/' | relative_url }}">
+      <span class="site-brand__eyebrow">Digital Humanities</span>
+      <span class="site-brand__title">{{ site.title }}</span>
+    </a>
+
+    <nav class="site-navigation" aria-label="主导航">
+      <ul class="site-menu">
+        {% for item in site.data.navigation.main %}
+          {% assign current = false %}
+          {% if page.url == item.url %}
+            {% assign current = true %}
+          {% endif %}
+          <li class="site-menu__item">
+            <a class="site-menu__link{% if current %} is-active{% endif %}" href="{{ item.url | relative_url }}"{% if current %} aria-current="page"{% endif %}>{{ item.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

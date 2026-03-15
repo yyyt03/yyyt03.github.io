@@ -1,4 +1,4 @@
-title: 课题组网站
+title: 考古课题组
 email: contact@example.com
 description: >-
   这里填写课题组简介，例如研究方向、单位和网站定位。
@@ -53,5 +53,5 @@ defaults:
 exclude:
   - .jekyll-cache/
   - _site/
-
+  - docs/
 

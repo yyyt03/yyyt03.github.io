@@ -4,23 +4,22 @@ title: 项目
 permalink: /projects/
 ---
 
-## 项目列表
+<div class="section-head">
+  <h2>项目列表</h2>
+</div>
 
 {% assign projects = site.projects %}
 {% if projects.size > 0 %}
-<ul>
+<div class="content-grid">
 {% for project in projects %}
-  <li>
-    <strong><a href="{{ project.url | relative_url }}">{{ project.title }}</a></strong>
-    <br>
-    周期：{{ project.period }}
-    <br>
-    负责人：{{ project.leader }}
-    <br>
-    {{ project.summary }}
-  </li>
+  <article class="card-item card-item--full">
+    <p class="card-meta">{{ project.period }}</p>
+    <h3 class="card-title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+    <p><strong>负责人：</strong>{{ project.leader }}</p>
+    <p>{{ project.summary }}</p>
+  </article>
 {% endfor %}
-</ul>
+</div>
 {% else %}
-当前还没有项目内容。
+<p>当前还没有项目内容。</p>
 {% endif %}

@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<article class="member-profile">
+  <div class="member-profile__hero">
+    {% if page.photo %}
+    <figure class="member-profile__media">
+      <img src="{{ page.photo | relative_url }}" alt="{{ page.name }}" class="member-profile__image">
+    </figure>
+    {% endif %}
+    <div class="member-profile__intro">
+      <p class="card-meta">{{ page.role }}</p>
+      <h1 class="hero-block__title">{{ page.name }}</h1>
+      {% if page.research %}
+      <p class="hero-block__lead">{{ page.research }}</p>
+      {% endif %}
+      {% if page.email %}
+      <p><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="member-profile__body">
+    {{ content }}
+  </div>
+</article>

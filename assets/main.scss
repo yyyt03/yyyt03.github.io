@@ -1,0 +1,358 @@
+---
+---
+$brand-color: #0f7b47;
+$text-color: #17354a;
+$background-color: #f7f6f2;
+$grey-color: #8d98a1;
+
+@import "minima";
+
+$nav-ink: #1f2b3a;
+$nav-accent: #127f52;
+$nav-border: #d7ddd6;
+$nav-soft: #eef5ef;
+
+body {
+  background: linear-gradient(180deg, #fcfbf8 0%, #f5f3ee 100%);
+  color: $nav-ink;
+  font-family: "Source Han Sans SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #162a3d;
+  font-family: "Source Han Serif SC", "Songti SC", "STSong", serif;
+  letter-spacing: 0.01em;
+}
+
+.wrapper {
+  max-width: 1180px;
+}
+
+.site-shell {
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid $nav-border;
+  box-shadow: 0 12px 30px rgba(15, 35, 27, 0.04);
+}
+
+.site-shell__meta {
+  border-bottom: 1px solid $nav-border;
+  background: #f8f8f5;
+}
+
+.site-shell__meta-inner,
+.site-shell__main {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.site-shell__meta-inner {
+  min-height: 44px;
+}
+
+.site-shell__meta-left,
+.site-shell__meta-right {
+  display: flex;
+  gap: 22px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.site-shell__meta-right a {
+  color: $nav-accent;
+  text-decoration: none;
+}
+
+.site-shell__main {
+  padding: 26px 0 22px;
+}
+
+.site-brand {
+  color: inherit;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 240px;
+  text-decoration: none;
+}
+
+.site-brand__eyebrow {
+  color: $nav-accent;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.site-brand__title {
+  font-family: "Source Han Serif SC", "Songti SC", "STSong", serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.06;
+}
+
+.site-navigation {
+  margin-left: auto;
+  overflow-x: auto;
+}
+
+.site-menu {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-menu__link {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: $nav-ink;
+  display: inline-flex;
+  font-size: 0.96rem;
+  font-weight: 700;
+  padding: 10px 16px;
+  text-decoration: none;
+  transition: all 160ms ease;
+}
+
+.site-menu__link:hover,
+.site-menu__link:focus-visible {
+  background: $nav-soft;
+  border-color: rgba(18, 127, 82, 0.18);
+  color: $nav-accent;
+}
+
+.site-menu__link.is-active {
+  background: $nav-accent;
+  border-color: $nav-accent;
+  box-shadow: 0 10px 20px rgba(18, 127, 82, 0.18);
+  color: #fff;
+}
+
+.page-content {
+  padding-top: 38px;
+}
+
+.page-content .wrapper {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(23, 53, 74, 0.08);
+  border-radius: 28px;
+  box-shadow: 0 24px 60px rgba(20, 40, 57, 0.08);
+  padding: 34px 38px 42px;
+}
+
+.hero-block {
+  border-bottom: 1px solid $nav-border;
+  margin-bottom: 26px;
+  padding-bottom: 26px;
+}
+
+.hero-block__kicker {
+  color: $nav-accent;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.hero-block__title {
+  font-size: clamp(2.3rem, 5vw, 4.4rem);
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.hero-block__lead {
+  color: #40576a;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  max-width: 58rem;
+}
+
+.info-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  margin-top: 28px;
+}
+
+.panel {
+  background: #fbfcfa;
+  border: 1px solid rgba(23, 53, 74, 0.08);
+  border-radius: 24px;
+  grid-column: span 6;
+  padding: 24px;
+}
+
+.panel--wide {
+  grid-column: 1 / -1;
+}
+
+.panel h2 {
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+}
+
+.section-head {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.section-head a {
+  color: $nav-accent;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.feature-list,
+.content-grid {
+  display: grid;
+  gap: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.feature-list li,
+.card-item {
+  background: #fff;
+  border: 1px solid rgba(23, 53, 74, 0.08);
+  border-radius: 18px;
+  padding: 16px 18px;
+}
+
+.content-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.card-item {
+  grid-column: span 4;
+}
+
+.card-item--full {
+  grid-column: 1 / -1;
+}
+
+.card-meta {
+  color: $nav-accent;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.card-title {
+  font-family: "Source Han Serif SC", "Songti SC", "STSong", serif;
+  font-size: 1.28rem;
+  margin-bottom: 8px;
+}
+
+.card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card-title a:hover {
+  color: $nav-accent;
+}
+
+.page-content ul:not(.feature-list):not(.content-grid) {
+  padding-left: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .site-shell__main,
+  .site-shell__meta-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-navigation {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .site-menu {
+    flex-wrap: nowrap;
+    min-width: max-content;
+    padding-bottom: 6px;
+  }
+
+  .panel,
+  .card-item {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-content .wrapper {
+    border-radius: 22px;
+    padding: 24px 18px 28px;
+  }
+
+  .site-shell__meta-left,
+  .site-shell__meta-right {
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+
+  .hero-block__title {
+    font-size: 2.5rem;
+  }
+}
+.member-card__image {
+  aspect-ratio: 4 / 5;
+  border-radius: 16px;
+  display: block;
+  margin-bottom: 14px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.member-profile__hero {
+  align-items: start;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: minmax(220px, 320px) 1fr;
+  margin-bottom: 30px;
+}
+
+.member-profile__media {
+  margin: 0;
+}
+
+.member-profile__image {
+  border-radius: 24px;
+  box-shadow: 0 20px 45px rgba(20, 40, 57, 0.14);
+  display: block;
+  width: 100%;
+}
+
+.member-profile__body {
+  border-top: 1px solid rgba(23, 53, 74, 0.08);
+  color: #40576a;
+  line-height: 1.9;
+  padding-top: 24px;
+}
+
+@media (max-width: 800px) {
+  .member-profile__hero {
+    grid-template-columns: 1fr;
+  }
+}

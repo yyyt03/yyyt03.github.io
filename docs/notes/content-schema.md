@@ -31,7 +31,7 @@
 
 ### 模板文件
 
-- [member-template.md](/e:/Code/myblog/templates/member-template.md)
+- `templates/member-template.md`
 
 ---
 
@@ -51,7 +51,7 @@
 
 ### 模板文件
 
-- [news-template.md](/e:/Code/myblog/templates/news-template.md)
+- `templates/news-template.md`
 
 ---
 
@@ -72,7 +72,7 @@
 
 ### 模板文件
 
-- [project-template.md](/e:/Code/myblog/templates/project-template.md)
+- `templates/project-template.md`
 
 ---
 
@@ -112,3 +112,4 @@
 - 建立 `_members`、`_news`、`_projects`
 - 放入 1 到 2 条示例内容
 - 开始写列表页和展示模板
+
