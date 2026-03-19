@@ -43,16 +43,14 @@ defaults:
       path: ""
       type: news
     values:
-      layout: page
+      layout: news-item
   - scope:
       path: ""
       type: projects
     values:
-      layout: page
+      layout: project-item
 
 exclude:
   - .jekyll-cache/
   - _site/
   - docs/
-
-

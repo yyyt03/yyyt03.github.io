@@ -43,7 +43,7 @@ Markdown 里只填文字，图片只填路径
 
 图片目录固定为 assets/uploads/
 
-固定页面：index.md / about.md / research.md / contact.md
+固定页面：pages/index.markdown / pages/about.markdown / pages/research.md / pages/contact.md
 
 条目栏目：_members / _news / _projects
 

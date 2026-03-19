@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: 项目
 permalink: /projects/
 ---
@@ -28,3 +28,5 @@ permalink: /projects/
     {% endif %}
   </div>
 </section>
+
+

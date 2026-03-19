@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: 新闻
 permalink: /news/
 ---
@@ -29,3 +29,5 @@ permalink: /news/
     {% endif %}
   </div>
 </section>
+
+

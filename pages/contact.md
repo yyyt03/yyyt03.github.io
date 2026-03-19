@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: 联系方式
 permalink: /contact/
 ---
@@ -23,3 +23,5 @@ permalink: /contact/
     </div>
   </div>
 </section>
+
+

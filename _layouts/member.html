@@ -1,29 +1,37 @@
 ---
 layout: default
 ---
-<article class="page-shell page-shell--member">
-  <div class="member-profile">
-    <div class="member-profile__hero">
-      {% if page.photo %}
-      <figure class="member-profile__media">
-        <img src="{{ page.photo | relative_url }}" alt="{{ page.name }}" class="member-profile__image">
-      </figure>
-      {% endif %}
-      <div class="member-profile__intro">
-        <p class="section-kicker">团队成员</p>
-        <h1 class="section-title section-title--left">{{ page.name }}</h1>
-        <p class="member-profile__role">{{ page.role }}</p>
-        {% if page.research %}
-        <p class="member-profile__lead">{{ page.research }}</p>
+<article class="page-shell page-shell--member-detail">
+  <div class="wrapper">
+    <section class="member-detail">
+      <div class="member-detail__grid{% unless page.photo %} member-detail__grid--no-photo{% endunless %}">
+        {% if page.photo %}
+        <figure class="member-detail__photo">
+          <img src="{{ page.photo | relative_url }}" alt="{{ page.name }}" class="member-detail__image">
+        </figure>
         {% endif %}
-        {% if page.email %}
-        <p><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>
-        {% endif %}
-      </div>
-    </div>
 
-    <div class="member-profile__body">
-      {{ content }}
-    </div>
+        <header class="member-detail__summary">
+          <p class="section-kicker">团队成员</p>
+          <h1 class="member-detail__name">{{ page.name }}</h1>
+          {% if page.role %}
+          <p class="member-detail__role">{{ page.role }}</p>
+          {% endif %}
+          {% if page.research %}
+          <p class="member-detail__research">{{ page.research }}</p>
+          {% endif %}
+          {% if page.email %}
+          <p class="member-detail__contact"><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>
+          {% endif %}
+        </header>
+
+        <section class="member-detail__content">
+          {{ content }}
+        </section>
+      </div>
+
+      <p class="detail-back"><a href="{{ '/members/' | relative_url }}">返回团队成员</a></p>
+    </section>
   </div>
 </article>
+

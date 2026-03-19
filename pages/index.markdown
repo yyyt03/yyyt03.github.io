@@ -37,7 +37,7 @@ permalink: /
         </div>
 
         <div class="media-stack">
-          <img class="media-stack__image" src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="实验室展示图">
+          <img class="media-stack__image" src="/assets/uploads/site/index-lab.jpg" alt="实验室展示图">
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@ permalink: /
 
       <div class="research-grid">
         <article class="research-card">
-          <img class="research-card__image" src="https://image.qwenlm.ai/public_source/9353c847-12e6-4af0-9c96-4a163f044fe8/1fddb16db-0764-4b76-8c83-57db62580954.png" alt="中国古代经济史">
+          <img class="research-card__image" src="/assets/uploads/site/research-economy.png" alt="中国古代经济史">
           <div class="research-card__body">
             <div class="icon-chip icon-chip--blue">⌕</div>
             <h3 class="card-title">中国古代经济史</h3>
@@ -61,7 +61,7 @@ permalink: /
         </article>
 
         <article class="research-card">
-          <img class="research-card__image" src="https://images.unsplash.com/photo-1599661046289-e31897846e41?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="长江流域开发史">
+          <img class="research-card__image" src="/assets/uploads/site/research-yangtze.jpg" alt="长江流域开发史">
           <div class="research-card__body">
             <div class="icon-chip icon-chip--orange">⚗</div>
             <h3 class="card-title">长江流域开发史</h3>
@@ -70,7 +70,7 @@ permalink: /
         </article>
 
         <article class="research-card">
-          <img class="research-card__image" src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="汉口经济史与楚文化开发史">
+          <img class="research-card__image" src="/assets/uploads/site/research-hankou.jpg" alt="汉口经济史与楚文化开发史">
           <div class="research-card__body">
             <div class="icon-chip icon-chip--green">⌬</div>
             <h3 class="card-title">汉口经济史与楚文化开发史</h3>
@@ -154,5 +154,6 @@ permalink: /
     </div>
   </section>
 </div>
+
 
 

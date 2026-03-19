@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: 成员
 permalink: /members/
 ---
@@ -35,3 +35,5 @@ permalink: /members/
     {% endif %}
   </div>
 </section>
+
+

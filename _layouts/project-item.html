@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<article class="page-shell detail-shell detail-shell--project">
+  <div class="wrapper">
+    <header class="detail-hero">
+      <p class="section-kicker">项目介绍</p>
+      <h1 class="section-title section-title--left">{{ page.title }}</h1>
+      <div class="detail-meta detail-meta--project">
+        {% if page.period %}<span class="detail-chip">周期 {{ page.period }}</span>{% endif %}
+        {% if page.status %}<span class="detail-chip">状态 {{ page.status }}</span>{% endif %}
+        {% if page.leader %}<span class="detail-chip">负责人 {{ page.leader }}</span>{% endif %}
+      </div>
+      {% if page.summary %}
+      <p class="detail-summary">{{ page.summary }}</p>
+      {% endif %}
+    </header>
+
+    <section class="detail-content">
+      {{ content }}
+    </section>
+
+    <p class="detail-back"><a href="{{ '/projects/' | relative_url }}">返回项目列表</a></p>
+  </div>
+</article>

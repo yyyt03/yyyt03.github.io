@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: 课题组简介
 permalink: /about/
 ---
@@ -26,8 +26,11 @@ permalink: /about/
       </div>
 
       <div class="media-stack">
-        <img class="media-stack__image" src="https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="实验室器材展示图">
+        <img class="media-stack__image" src="/assets/uploads/site/about-lab.jpg" alt="实验室器材展示图">
       </div>
     </div>
   </div>
 </section>
+
+
+

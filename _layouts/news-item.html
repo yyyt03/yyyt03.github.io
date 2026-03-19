@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<article class="page-shell detail-shell detail-shell--news">
+  <div class="wrapper">
+    <header class="detail-hero">
+      <p class="section-kicker">学术成果</p>
+      <h1 class="section-title section-title--left">{{ page.title }}</h1>
+      <div class="detail-meta">
+        {% if page.date %}<span class="detail-chip">发布时间 {{ page.date | date: "%Y-%m-%d" }}</span>{% endif %}
+      </div>
+      {% if page.cover %}
+      <figure class="detail-cover">
+        <img src="{{ page.cover | relative_url }}" alt="{{ page.title }}">
+      </figure>
+      {% endif %}
+      {% if page.summary %}
+      <p class="detail-summary">{{ page.summary }}</p>
+      {% endif %}
+    </header>
+
+    <section class="detail-content">
+      {{ content }}
+    </section>
+
+    <p class="detail-back"><a href="{{ '/news/' | relative_url }}">返回学术成果</a></p>
+  </div>
+</article>
