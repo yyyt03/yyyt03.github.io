@@ -2,6 +2,10 @@ media:
   input: assets/uploads
   output: /assets/uploads
 
+settings:
+  content:
+    merge: true
+
 content:
   - name: members
     label: 团队成员
@@ -20,6 +24,9 @@ content:
       - name: photo
         label: 照片
         type: image
+        options:
+          path: members
+          extensions: [jpg, jpeg, png, webp]
       - name: research
         label: 研究方向
         type: text
@@ -32,9 +39,12 @@ content:
       - name: body
         label: 详细介绍
         type: rich-text
+        options:
+          path: members
+          extensions: [jpg, jpeg, png, webp, gif]
 
   - name: news
-    label: 新闻成果
+    label: 学术成果
     type: collection
     path: _news
     format: yaml-frontmatter
@@ -50,12 +60,19 @@ content:
       - name: cover
         label: 封面图
         type: image
+        options:
+          path: news
+          extensions: [jpg, jpeg, png, webp]
       - name: summary
         label: 摘要
         type: text
       - name: body
-        label: 正文
+        label: 正文（支持插图）
+        description: 在正文输入框中可通过工具栏图片按钮或输入 /image 插入正文图片。
         type: rich-text
+        options:
+          path: news
+          extensions: [jpg, jpeg, png, webp, gif]
 
   - name: projects
     label: 项目
@@ -85,6 +102,9 @@ content:
       - name: body
         label: 详情
         type: rich-text
+        options:
+          path: projects
+          extensions: [jpg, jpeg, png, webp, gif]
 
   - name: about
     label: 固定页-关于

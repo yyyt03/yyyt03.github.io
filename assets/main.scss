@@ -1774,3 +1774,36 @@ h6 {
     aspect-ratio: 16 / 11;
   }
 }
+
+/* Pages CMS 富文本正文插图样式 */
+.detail-content figure,
+.member-detail__content figure {
+  margin: 22px 0;
+}
+
+.detail-content img,
+.member-detail__content img {
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(28, 38, 54, 0.12);
+  display: block;
+  height: auto;
+  margin: 18px auto;
+  max-width: 100%;
+}
+
+.detail-content figcaption,
+.member-detail__content figcaption {
+  color: $lab-ink-soft;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  margin-top: 8px;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .detail-content img,
+  .member-detail__content img {
+    border-radius: 12px;
+    margin: 14px auto;
+  }
+}
