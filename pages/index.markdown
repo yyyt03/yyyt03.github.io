@@ -22,11 +22,11 @@ permalink: /
         <div>
           <h2 class="section-title section-title--left">关于实验室</h2>
           <div class="about-accent-line"></div>
-          <p class="about-copy">本网站围绕导师研究方向与课题组建设工作展开，当前重点展示 <strong>中国古代经济史</strong>、<strong>长江流域开发史</strong>、<strong>汉口经济史</strong> 以及 <strong>楚文化开发史</strong> 等相关研究主题。</p>
-          <p class="about-copy">我们希望把传统历史研究、文献分析与数字化展示结合起来，让成员、新闻、项目与研究成果形成一个长期可维护的公开窗口。</p>
+          <p class="about-copy">本网站围绕李英华教授团队的研究与课题组建设工作展开，当前重点展示 <strong>石器技术研究</strong>、<strong>汉水流域及长江中游旧石器技术起源与演化</strong>、<strong>华南与东南亚古代人类文化技术关系</strong> 等核心主题。</p>
+          <p class="about-copy">课题组强调历史学、考古学与科技考古的跨学科协作，同时持续推进与东南亚高校和研究机构的国际交流，让成员、新闻、项目与研究成果形成长期可维护的公开窗口。</p>
           <div class="stats-grid">
             <div class="stat-card">
-              <div class="stat-card__value">4</div>
+              <div class="stat-card__value">3</div>
               <p>核心研究主题</p>
             </div>
             <div class="stat-card stat-card--accent">
@@ -43,38 +43,38 @@ permalink: /
     </div>
   </section>
 
-  <section class="section-block section-block--soft">
+  <section class="section-block section-block--soft research-showcase">
     <div class="wrapper">
       <div class="section-header">
         <h2 class="section-title">核心研究领域</h2>
-        <p class="section-intro">结合历史学研究传统与现代分析方法，我们当前希望围绕以下几个方向持续建设课题组网站的内容框架。</p>
+        <p class="section-intro">课题组将传统历史学方法与科技考古分析结合，当前持续建设以下三个方向的内容。</p>
       </div>
 
       <div class="research-grid">
         <article class="research-card">
-          <img class="research-card__image" src="/assets/uploads/site/research-economy.png" alt="中国古代经济史">
+          <img class="research-card__image" src="/assets/uploads/site/research-economy.png" alt="石器技术研究">
           <div class="research-card__body">
             <div class="icon-chip icon-chip--blue">⌕</div>
-            <h3 class="card-title">中国古代经济史</h3>
-            <p>围绕中国古代社会中的生产、交换、区域发展与资源组织，理解经济结构与历史变迁之间的互动关系。</p>
+            <h3 class="card-title">石器技术研究</h3>
+            <p>围绕旧石器时代技术体系开展类型学与工艺链分析，结合显微观察重建早期人类技术行为与知识传统。</p>
           </div>
         </article>
 
         <article class="research-card">
-          <img class="research-card__image" src="/assets/uploads/site/research-yangtze.jpg" alt="长江流域开发史">
+          <img class="research-card__image" src="/assets/uploads/site/research-yangtze.jpg" alt="汉水流域与长江中游旧石器研究">
           <div class="research-card__body">
             <div class="icon-chip icon-chip--orange">⚗</div>
-            <h3 class="card-title">长江流域开发史</h3>
-            <p>从区域开发、交通网络与社会组织角度，追踪长江流域历史发展与区域整合的长期过程。</p>
+            <h3 class="card-title">汉水流域与长江中游旧石器研究</h3>
+            <p>关注远古人类石器技术的起源与演化过程，追踪区域人群活动与环境适应之间的长期互动关系。</p>
           </div>
         </article>
 
         <article class="research-card">
-          <img class="research-card__image" src="/assets/uploads/site/research-hankou.jpg" alt="汉口经济史与楚文化开发史">
+          <img class="research-card__image" src="/assets/uploads/site/research-hankou.jpg" alt="华南与东南亚比较研究">
           <div class="research-card__body">
             <div class="icon-chip icon-chip--green">⌬</div>
-            <h3 class="card-title">汉口经济史与楚文化开发史</h3>
-            <p>结合城市史、商业史与区域文化史，探索汉口的历史经济地位以及楚文化开发与传播的历史脉络。</p>
+            <h3 class="card-title">华南与东南亚比较研究</h3>
+            <p>比较华南与东南亚古代人类文化和技术关系，为跨区域考古合作与文明交流研究提供新的证据框架。</p>
           </div>
         </article>
       </div>
@@ -85,7 +85,7 @@ permalink: /
     <div class="wrapper">
       <div class="section-header">
         <h2 class="section-title">研究团队</h2>
-        <p class="section-intro">目前网站已开始接入真实成员信息，后续可继续补充更多教师、研究生与合作成员。</p>
+        <p class="section-intro">目前网站已接入真实成员信息，后续将继续补充教师、研究生与合作成员。</p>
       </div>
 
       {% assign members = site.members | sort: "order" %}
@@ -138,7 +138,7 @@ permalink: /
     <div class="wrapper">
       <div class="section-header">
         <h2 class="section-title">加入我们</h2>
-        <p class="section-intro">我们欢迎对历史研究、考古科学与数字人文学术展示感兴趣的学生、研究者及合作伙伴与我们取得联系。</p>
+        <p class="section-intro">我们欢迎对考古科学、历史研究与跨区域文化比较感兴趣的学生、研究者及合作伙伴与我们取得联系。</p>
       </div>
 
       <div class="contact-grid">
@@ -154,6 +154,3 @@ permalink: /
     </div>
   </section>
 </div>
-
-
-

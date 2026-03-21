@@ -220,7 +220,61 @@ content:
 2. 再补 `.pages.yml` 上线 Pages CMS。
 3. 试运行 1 周后，根据团队反馈决定是否继续只用 Pages CMS，或切换到 Decap CMS（当你需要“无 GitHub 写权限编辑”时）。
 
-## 8. 参考资料（官方）
+## 8. Cloudflare Pages 接入流程（可直接照着操作）
+
+下面按“先可用、再切换、可回滚”的思路写成 SOP。
+
+### 阶段 A：接入前准备（10~20 分钟）
+
+1. 确认仓库默认分支是 `main`，并且本地构建通过：`bundle exec jekyll build`。
+2. 确认 `_config.yml` 的这两个字段：
+   - `baseurl: ""`（你现在就是这样）
+   - `url:` 先保持现状，等 Cloudflare 域名确定后再改
+3. 如果你准备绑定自定义域名，提前确认域名 DNS 可由 Cloudflare 托管。
+
+### 阶段 B：在 Cloudflare Pages 创建站点（15~30 分钟）
+
+1. 登录 Cloudflare 控制台，进入 **Workers & Pages**。
+2. 点击 **Create application** -> **Pages** -> **Connect to Git**。
+3. 授权 GitHub 后选择仓库 `yyyt03.github.io`，分支选 `main`。
+4. 构建配置建议填写：
+   - Framework preset: `None`
+   - Build command: `bundle exec jekyll build`
+   - Build output directory: `_site`
+5. 点击 **Save and Deploy**，等待首次部署完成。
+
+> 说明：如果首次构建提示依赖问题，可把 Build command 改成 `bundle install && bundle exec jekyll build` 再重试。
+
+### 阶段 C：功能验证（10~20 分钟）
+
+1. 打开 Pages 生成的 `*.pages.dev` 域名，检查：
+   - 首页与各栏目页是否能访问。
+   - 成员、新闻、项目详情页是否正常。
+   - 图片路径 `/assets/uploads/...` 是否正常加载。
+2. 在 GitHub 提交一条小改动（例如文案），确认 Cloudflare 能自动触发新部署。
+3. 在 Cloudflare 的 Deployments 页面确认最近一次状态是 `Success`。
+
+### 阶段 D：域名切换（可选，建议验证后再做）
+
+1. 在 Cloudflare Pages -> **Custom domains** 添加你的正式域名。
+2. 按 Cloudflare 提示完成 DNS 记录（通常是 CNAME 或 Cloudflare 托管下自动记录）。
+3. 等证书状态变为 Active 后再做对外切换通知。
+4. 若切到自定义域名，记得把 `_config.yml` 里的 `url` 更新为正式域名并重新部署一次。
+
+### 阶段 E：保留回滚策略（强烈建议）
+
+1. GitHub Pages 暂时不要关闭，保留为备份链路。
+2. 对外公告先用 Cloudflare 域名灰度 3~7 天。
+3. 如遇异常，临时切回 GitHub Pages 域名即可（零代码回滚）。
+
+### 阶段 F：推荐的发布规范（接入后）
+
+1. 内容改动统一走 `main`（或 PR 合并到 `main`）触发 Cloudflare 自动部署。
+2. 每次发布后至少抽查：`/`、`/members/`、`/news/`、`/projects/`。
+3. 图片发布前压缩，避免首屏大图拖慢访问。
+4. 若后续要接入 Pages Functions，再单独评估成本与缓存策略；纯静态站当前无需启用。
+
+## 9. 参考资料（官方）
 
 - GitHub Pages 限制：
   https://docs.github.com/en/enterprise-cloud@latest/pages/getting-started-with-github-pages/github-pages-limits
@@ -241,3 +295,12 @@ content:
 - Decap CMS（Jekyll）：
   https://decapcms.org/docs/jekyll/
 
+
+## 10. Cloudflare 构建失败案例（2026-03-21）
+
+你本次失败不是 Jekyll 构建失败，而是部署链路选成了 Worker + `wrangler deploy`。
+
+- 证据：日志先显示 `Success: Build command completed`，随后在 `wrangler deploy` 阶段失败。
+- 修复：改用 Cloudflare Pages 项目流（Build command: `bundle exec jekyll build`，Output: `_site`，不再填写 `npx wrangler deploy`）。
+
+详见：`docs/notes/error.md`

@@ -18,10 +18,11 @@ permalink: /contact/
       </article>
       <article class="contact-card">
         <strong>邮箱</strong>
-        <p>liyinghua@whu.edu.cn<br>建议合作与招生咨询优先使用邮件联系</p>
+        <p>lyhfrance2005@yahoo.fr<br>建议合作与招生咨询优先使用邮件联系</p>
       </article>
     </div>
   </div>
 </section>
+
 
 

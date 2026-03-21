@@ -67,3 +67,7 @@ git push origin main
 ## 部署与 CMS 决策
 
 详见：`docs/notes/deploy-and-cms-plan.md`
+
+## 域名维护
+
+详见：`docs/notes/cloudflare-domain-change.md`
