@@ -7,6 +7,8 @@ main:
     url: /research/
   - title: 团队成员
     url: /members/
+  - title: 项目
+    url: /projects/
   - title: 学术成果
     url: /news/
   - title: 联系我们
