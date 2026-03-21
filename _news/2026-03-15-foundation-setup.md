@@ -1,5 +1,6 @@
 ---
 layout: news-item
+permalink: /news/2026-03-15-site-setup/
 title: 课题组网站完成基础结构搭建
 date: 2026-03-15
 cover: /assets/uploads/news/site-setup.jpg
