@@ -1,2 +1,3 @@
 # yyyt03-self
-self-page
+
+Personal homepage for GitHub Pages.
