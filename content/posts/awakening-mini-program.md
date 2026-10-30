@@ -6,7 +6,7 @@ draft: false
 tags: [AIGC]
 ---
 
-2025 年，我使用 Cursor 辅助开发并上线了微信小程序「觉醒天赋推荐」，为《王者荣耀》觉醒之战玩家提供天赋、出装与玩法方案查询。这是一次由我独立完成需求梳理、开发、测试、发布和运营的产品实践，持续到同年 9 月。
+2025 年 7 月至 9 月，我使用 Cursor 辅助开发并运营了微信小程序「觉醒天赋推荐」，为《王者荣耀》觉醒之战玩家提供天赋、出装与玩法方案查询。这是一次由我独立完成需求梳理、开发、测试、发布和运营的产品实践。
 
 ## 背景：让攻略更容易查询
 
@@ -38,7 +38,13 @@ tags: [AIGC]
 
 开发过程中，我负责明确页面行为、拆分任务、检查 Cursor 生成的代码，并结合实际使用反馈修复问题。重点始终是把功能串成用户能够完整走通的流程。
 
-<figure class="project-figure moderation-figure"><a href="/images/awakening-mini-program/moderation.jpg"><img src="/images/awakening-mini-program/moderation.jpg" alt="用户中心及方案审核页面长截图，展示状态筛选、英雄筛选和审核操作" width="948" height="6251" loading="lazy"></a><figcaption>方案审核局部，点击查看用户中心与审核流程完整长图</figcaption></figure>
+<div class="project-gallery moderation-gallery">
+  <figure><a class="screenshot-crop user-center-crop" href="/images/awakening-mini-program/moderation.jpg"><img src="/images/awakening-mini-program/moderation.jpg" alt="用户中心：我的方案、收藏方案、方案管理与创作入口" width="948" height="6251" loading="lazy"></a><figcaption>用户中心：方案与收藏入口</figcaption></figure>
+  <figure><a class="screenshot-crop review-crop" href="/images/awakening-mini-program/moderation.jpg"><img src="/images/awakening-mini-program/moderation.jpg" alt="方案审核：按状态筛选，预览、编辑、通过发布、拒绝和删除方案" width="948" height="6251" loading="lazy"></a><figcaption>方案审核：状态筛选与发布操作</figcaption></figure>
+  <figure><a class="screenshot-crop hero-filter-crop" href="/images/awakening-mini-program/moderation.jpg"><img src="/images/awakening-mini-program/moderation.jpg" alt="英雄筛选：在方案管理中展开英雄列表，定位对应方案" width="948" height="6251" loading="lazy"></a><figcaption>英雄筛选：快速定位对应方案</figcaption></figure>
+</div>
+
+[查看用户中心与方案审核完整长图 →](/images/awakening-mini-program/moderation.jpg)
 
 ## 结果：获得真实用户使用
 

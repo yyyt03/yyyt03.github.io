@@ -80,7 +80,8 @@ await cp(path.join(root, "public"), output, { recursive: true });
 for (const filename of ["styles.css", "script.js"]) await cp(path.join(root, filename), path.join(output, filename));
 const homepage = (await readFile(path.join(root, "index.html"), "utf8"))
   .replace('<link rel="stylesheet" href="./styles.css">', () => `<style>${stylesheet}</style>`)
-  .replace('src="./script.js"', `src="/script.js?v=${assetVersion}"`);
+  .replace('src="./script.js"', `src="/script.js?v=${assetVersion}"`)
+  .replace(/<!-- RECENT_POSTS -->[\s\S]*?<!-- \/RECENT_POSTS -->/, posts.length ? postList(posts.slice(0, 3), "./blog/") : "");
 await writeFile(path.join(output, "index.html"), homepage);
 await writeFile(path.join(output, ".nojekyll"), "");
 await writeFile(path.join(output, "blog/index.html"), document({
