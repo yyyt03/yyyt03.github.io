@@ -9,8 +9,8 @@ const langButtons = document.querySelectorAll("[data-lang-button]");
 const metadata = {
   zh: {
     lang: "zh-CN",
-    title: "Yutong Ren · yyyt03",
-    description: "Yutong Ren 的个人主页与博客。保持热情。",
+    title: "任宇童 · yyyt03",
+    description: "任宇童的个人主页与博客。保持热情。",
   },
   en: {
     lang: "en",

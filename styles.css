@@ -32,7 +32,7 @@ a:focus-visible, button:focus-visible {
 .site-content { width: min(100%, 980px); }
 
 body {
-  font-family: "Noto Sans SC", sans-serif;
+  font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
   background:
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.55), transparent 30%),
     linear-gradient(180deg, #efeeed 0%, #e6e3e1 100%);
@@ -168,9 +168,12 @@ h1 {
 }
 
 .profile-links { display: flex; flex-wrap: wrap; gap: 24px; font-size: 0.95rem; }
-.recent-posts { padding: 32px 4px 0; }
+.profile-links a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+.profile-links a:hover span { text-decoration: underline; }
+.link-icon { display: block; width: 18px; height: 18px; flex: 0 0 auto; }
+.recent-posts { padding: 36px 4px 0; }
 .section-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
-.section-heading h2 { margin: 0; font-size: 1.05rem; font-weight: 500; }
+.section-heading h2 { margin: 0; font-size: 1.7rem; font-weight: 700; letter-spacing: 0.02em; }
 .section-heading a { font-size: 0.9rem; }
 .empty-state { margin: 24px 0 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; }
 .post-list { padding: 0; margin: 18px 0 0; list-style: none; }
@@ -178,13 +181,36 @@ h1 {
 .post-list a { display: grid; grid-template-columns: 108px minmax(0, 1fr); gap: 20px; padding: 19px 0; text-decoration: none; }
 .post-list time { font-size: 0.85rem; color: var(--text-secondary); padding-top: 3px; }
 .post-list span { overflow-wrap: anywhere; line-height: 1.5; }
-.blog-shell { width: min(100%, 820px); margin: 0 auto; padding: 40px 24px 80px; }
+.blog-page {
+  background:
+    radial-gradient(ellipse at 10% 10%, rgba(255, 255, 255, 0.95), transparent 48%),
+    radial-gradient(ellipse at 95% 80%, rgba(255, 255, 255, 0.8), transparent 48%),
+    linear-gradient(135deg, #e8e7e5, #f2f1f0 50%, #e5e4e2);
+  background-attachment: fixed;
+}
+.blog-shell { width: min(100%, 980px); min-height: 100vh; margin: 0 auto; padding: 48px 24px 80px; }
 .blog-nav { position: relative; min-height: 44px; display: flex; align-items: center; gap: 24px; padding-right: 140px; font-size: 0.9rem; }
+.blog-nav > a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+.blog-nav > a:hover { text-decoration: underline; }
 .blog-nav .language-switch { top: 0; right: 0; }
+.blog-index-card, .article-card {
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  border-radius: 20px;
+  box-shadow: 0 20px 70px rgba(42, 36, 29, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+}
+.blog-index-card { margin-top: 32px; padding: 48px 56px; min-height: 400px; }
+.blog-index-header { padding-bottom: 28px; border-bottom: 1px solid rgba(70, 60, 50, 0.1); }
+.blog-index-header h1 { margin: 0; font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1.2; }
+.blog-index-card > .empty-state { display: grid; place-items: center; min-height: 230px; margin: 0; color: #77706b; font-size: 0.9rem; }
+.blog-index-card .post-list { margin-top: 4px; }
+.blog-index-card .post-list li:first-child { border-top: 0; }
 .blog-header { margin: 64px 0 32px; }
 .blog-header h1 { margin-bottom: 20px; font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.3; overflow-wrap: anywhere; }
 .blog-header p, .post-date { color: var(--text-secondary); line-height: 1.8; }
-.article-card { margin-top: 40px; padding: 44px 48px; background: var(--card-bg); box-shadow: var(--shadow); }
+.article-card { margin-top: 32px; padding: 44px 48px; }
 .article-card .blog-header { margin-top: 0; }
 .article-body { font-size: 1.05rem; line-height: 1.9; overflow-wrap: anywhere; }
 .article-body h2, .article-body h3 { line-height: 1.45; margin-top: 1.7em; }
@@ -234,6 +260,9 @@ h1 {
   }
 
   .blog-shell { padding: 24px 18px 48px; }
+  .blog-index-card { padding: 30px 24px; margin-top: 24px; min-height: 350px; border-radius: 16px; }
+  .blog-index-header { padding-bottom: 24px; }
+  .blog-index-card > .empty-state { min-height: 210px; }
   .blog-header { margin-top: 40px; }
   .article-card { padding: 28px 22px; margin-top: 28px; }
   .post-list a { grid-template-columns: 1fr; gap: 6px; }

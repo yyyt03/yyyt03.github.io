@@ -7,8 +7,9 @@ import { marked } from "marked";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const output = path.join(root, "dist");
+const stylesheet = await readFile(path.join(root, "styles.css"), "utf8");
 const assetVersion = createHash("sha256")
-  .update(await readFile(path.join(root, "styles.css")))
+  .update(stylesheet)
   .update(await readFile(path.join(root, "script.js")))
   .digest("hex").slice(0, 12);
 const escape = (value) => String(value).replace(/[&<>"']/g, (char) => ({
@@ -33,7 +34,7 @@ for (const filename of await readdir(path.join(root, "content/posts"))) {
 }
 posts.sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
 
-const empty = bilingual("p", "文章整理中，写好后会放在这里。", "I'm putting my notes together. New posts will appear here.", 'class="empty-state"');
+const empty = bilingual("p", "暂无文章", "No posts yet", 'class="empty-state"');
 function postList(items, prefix) {
   if (!items.length) return empty;
   return `<ul class="post-list">${items.map((post) => `<li><a href="${prefix}${post.slug}/"><time datetime="${post.date}">${post.date}</time>${bilingual("span", post.title, post.titleEn)}</a></li>`).join("\n")}</ul>`;
@@ -44,26 +45,26 @@ const switcher = `<div class="language-switch" aria-label="Language switch">
   <button class="language-option" type="button" data-lang-button="en" aria-pressed="false">EN</button>
 </div>`;
 
-function document({ title, titleEn, prefix, content }) {
+function document({ title, titleEn, prefix, content, listing = false }) {
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-zh="${escape(title)} · Yutong Ren" data-en="${escape(titleEn)} · Yutong Ren">${escape(title)} · Yutong Ren</title>
-  <meta name="description" content="${escape(title)} — Yutong Ren 的博客" data-zh="${escape(title)} — Yutong Ren 的博客" data-en="${escape(titleEn)} — Blog of Yutong Ren">
-  <link rel="stylesheet" href="${prefix}styles.css?v=${assetVersion}">
+  <title data-zh="${escape(title)} · 任宇童" data-en="${escape(titleEn)} · Yutong Ren">${escape(title)} · 任宇童</title>
+  <meta name="description" content="${escape(title)} — 任宇童的博客" data-zh="${escape(title)} — 任宇童的博客" data-en="${escape(titleEn)} — Blog of Yutong Ren">
+  <style>${stylesheet}</style>
 </head>
-<body data-language="zh">
+<body class="blog-page" data-language="zh">
   <main class="blog-shell">
     <nav class="blog-nav" aria-label="Navigation">
-      ${bilingual("a", "首页", "Home", `href="${prefix}"`)}
-      ${bilingual("a", "博客", "Blog", `href="${prefix}blog/"`)}
+      <a href="${prefix}"><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 5-7 7 7 7M5 12h14"/></svg>${bilingual("span", "首页", "Home")}</a>
+      ${listing ? "" : bilingual("a", "博客", "Blog", `href="${prefix}blog/"`)}
       ${switcher}
     </nav>
     ${content}
   </main>
-  <script src="${prefix}script.js?v=${assetVersion}"></script>
+  <script src="/script.js?v=${assetVersion}"></script>
 </body>
 </html>\n`;
 }
@@ -74,14 +75,14 @@ await mkdir(path.join(output, "blog"), { recursive: true });
 await cp(path.join(root, "public"), output, { recursive: true });
 for (const filename of ["styles.css", "script.js"]) await cp(path.join(root, filename), path.join(output, filename));
 const homepage = (await readFile(path.join(root, "index.html"), "utf8"))
-  .replace('href="./styles.css"', `href="./styles.css?v=${assetVersion}"`)
-  .replace('src="./script.js"', `src="./script.js?v=${assetVersion}"`)
-  .replace(/<!-- RECENT_POSTS -->[\s\S]*?<!-- \/RECENT_POSTS -->/, postList(posts.slice(0, 3), "./blog/"));
+  .replace('<link rel="stylesheet" href="./styles.css">', () => `<style>${stylesheet}</style>`)
+  .replace('src="./script.js"', `src="/script.js?v=${assetVersion}"`)
+  .replace(/<!-- RECENT_POSTS -->[\s\S]*?<!-- \/RECENT_POSTS -->/, posts.length ? postList(posts.slice(0, 3), "./blog/") : "");
 await writeFile(path.join(output, "index.html"), homepage);
 await writeFile(path.join(output, ".nojekyll"), "");
 await writeFile(path.join(output, "blog/index.html"), document({
-  title: "博客", titleEn: "Blog", prefix: "../",
-  content: `<header class="blog-header">${bilingual("h1", "博客", "Blog")}${bilingual("p", "记录学习中的理解与思考。", "Notes and thoughts from what I'm learning.")}</header>${postList(posts, "./")}`,
+  title: "博客", titleEn: "Blog", prefix: "../", listing: true,
+  content: `<section class="blog-index-card" aria-labelledby="blog-heading"><header class="blog-index-header">${bilingual("h1", "博客", "Blog", 'id="blog-heading"')}</header>${postList(posts, "./")}</section>`,
 }));
 
 for (const post of posts) {
