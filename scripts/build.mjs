@@ -1,11 +1,16 @@
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 import matter from "gray-matter";
 import { marked } from "marked";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const output = path.join(root, "dist");
+const assetVersion = createHash("sha256")
+  .update(await readFile(path.join(root, "styles.css")))
+  .update(await readFile(path.join(root, "script.js")))
+  .digest("hex").slice(0, 12);
 const escape = (value) => String(value).replace(/[&<>"']/g, (char) => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
 })[char]);
@@ -47,7 +52,7 @@ function document({ title, titleEn, prefix, content }) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-zh="${escape(title)} · Yutong Ren" data-en="${escape(titleEn)} · Yutong Ren">${escape(title)} · Yutong Ren</title>
   <meta name="description" content="${escape(title)} — Yutong Ren 的博客" data-zh="${escape(title)} — Yutong Ren 的博客" data-en="${escape(titleEn)} — Blog of Yutong Ren">
-  <link rel="stylesheet" href="${prefix}styles.css">
+  <link rel="stylesheet" href="${prefix}styles.css?v=${assetVersion}">
 </head>
 <body data-language="zh">
   <main class="blog-shell">
@@ -58,7 +63,7 @@ function document({ title, titleEn, prefix, content }) {
     </nav>
     ${content}
   </main>
-  <script src="${prefix}script.js"></script>
+  <script src="${prefix}script.js?v=${assetVersion}"></script>
 </body>
 </html>\n`;
 }
@@ -69,6 +74,8 @@ await mkdir(path.join(output, "blog"), { recursive: true });
 await cp(path.join(root, "public"), output, { recursive: true });
 for (const filename of ["styles.css", "script.js"]) await cp(path.join(root, filename), path.join(output, filename));
 const homepage = (await readFile(path.join(root, "index.html"), "utf8"))
+  .replace('href="./styles.css"', `href="./styles.css?v=${assetVersion}"`)
+  .replace('src="./script.js"', `src="./script.js?v=${assetVersion}"`)
   .replace(/<!-- RECENT_POSTS -->[\s\S]*?<!-- \/RECENT_POSTS -->/, postList(posts.slice(0, 3), "./blog/"));
 await writeFile(path.join(output, "index.html"), homepage);
 await writeFile(path.join(output, ".nojekyll"), "");
