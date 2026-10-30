@@ -9,13 +9,13 @@ const langButtons = document.querySelectorAll("[data-lang-button]");
 const metadata = {
   zh: {
     lang: "zh-CN",
-    title: "yyyt03",
-    description: "yyyt03 的个人页面",
+    title: "Yutong Ren · yyyt03",
+    description: "Yutong Ren 的个人主页与博客。保持热情。",
   },
   en: {
     lang: "en",
-    title: "yyyt03",
-    description: "Personal homepage of yyyt03",
+    title: "Yutong Ren · yyyt03",
+    description: "Personal homepage and blog of Yutong Ren. Stay passionate.",
   },
 };
 
@@ -24,8 +24,8 @@ function setLanguage(lang) {
 
   html.lang = metadata[next].lang;
   body.dataset.language = next;
-  title.textContent = metadata[next].title;
-  description.setAttribute("content", metadata[next].description);
+  title.textContent = title.dataset[next] || metadata[next].title;
+  description.setAttribute("content", description.dataset[next] || metadata[next].description);
 
   textNodes.forEach((node) => {
     const value = node.dataset[next];
@@ -47,7 +47,11 @@ function setLanguage(lang) {
     button.setAttribute("aria-pressed", active ? "true" : "false");
   });
 
-  window.localStorage.setItem("preferred-language", next);
+  try {
+    window.localStorage.setItem("preferred-language", next);
+  } catch {
+    // Language switching also works when browser storage is unavailable.
+  }
 }
 
 langButtons.forEach((button) => {
@@ -56,5 +60,10 @@ langButtons.forEach((button) => {
   });
 });
 
-const savedLanguage = window.localStorage.getItem("preferred-language");
+let savedLanguage;
+try {
+  savedLanguage = window.localStorage.getItem("preferred-language");
+} catch {
+  savedLanguage = "zh";
+}
 setLanguage(savedLanguage || "zh");

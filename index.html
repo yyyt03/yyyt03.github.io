@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>yyyt03</title>
-  <meta name="description" content="yyyt03 的个人页面">
+  <title>Yutong Ren · yyyt03</title>
+  <meta name="description" content="Yutong Ren 的个人主页与博客。保持热情。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -12,6 +12,7 @@
 </head>
 <body data-language="zh">
   <main class="page-shell">
+    <div class="site-content">
     <section class="profile-card" aria-label="个人简介">
       <div class="language-switch" aria-label="Language switch">
         <span class="language-thumb" aria-hidden="true"></span>
@@ -22,29 +23,34 @@
         <p
           class="eyebrow"
           data-i18n="eyebrow"
-          data-zh="Personal page"
-          data-en="Personal page"
-        >Personal page</p>
+          data-zh="你好，我是"
+          data-en="Hi, I'm"
+        >你好，我是</p>
         <h1
           data-i18n="heading"
-          data-zh="嘿，我是 yyyt03。"
-          data-en="Hi, I'm yyyt03."
-        >嘿，我是 yyyt03。</h1>
+          data-zh="Yutong Ren"
+          data-en="Yutong Ren"
+        >Yutong Ren</h1>
         <p
           data-i18n="paragraph-1"
-          data-zh="我是一名计算机相关方向的研究生。我喜欢把抽象的想法做成能运行、能展示、能继续迭代的东西。"
-          data-en="I'm a graduate student in a computing-related field. I like turning abstract ideas into things that can run, be demonstrated, and continue to iterate."
-        >我是一名计算机相关方向的研究生。我喜欢把抽象的想法做成能运行、能展示、能继续迭代的东西。</p>
+          data-zh="我是东北大学计算机技术专业的研究生，对 AI 及其实际应用充满兴趣。"
+          data-en="I'm a graduate student in Computer Technology at Northeastern University, interested in AI and its practical applications."
+        >我是东北大学计算机技术专业的研究生，对 AI 及其实际应用充满兴趣。</p>
         <p
           data-i18n="paragraph-2"
-          data-zh="基于AI的冲击，我更喜欢理顺逻辑，并通过AI完成工作。"
-          data-en="Driven by the impact of AI, I prefer to clarify logic and accomplish work through AI."
-        >基于AI的冲击，我更喜欢理顺逻辑，并通过AI完成工作。</p>
+          data-zh="目前在学习 Java 后端开发、AI Agents 和 RAG，喜欢理清问题的逻辑，再把想法付诸实践。"
+          data-en="I'm currently learning Java backend development, AI Agents, and RAG. I enjoy working through the logic of a problem and putting ideas into practice."
+        >目前在学习 Java 后端开发、AI Agents 和 RAG，喜欢理清问题的逻辑，再把想法付诸实践。</p>
         <p
           data-i18n="paragraph-3"
-          data-zh="之前我通过AI制作过微信小程序/网页/油猴脚本/检查word格式小工具等等。"
-          data-en="Previously, I have created WeChat mini-programs, web pages, Tampermonkey scripts, Word format checking tools, and more with the help of AI."
-        >之前我通过AI制作过微信小程序/网页/油猴脚本/检查word格式小工具等等。</p>
+          data-zh="这里记录学习中的理解与思考。"
+          data-en="This is where I share what I learn and think about along the way."
+        >这里记录学习中的理解与思考。</p>
+        <nav class="profile-links" aria-label="个人链接">
+          <a href="./blog/" data-i18n data-zh="博客" data-en="Blog">博客</a>
+          <a href="https://github.com/yyyt03">GitHub</a>
+          <a href="mailto:yutongren@hotmail.com" data-i18n data-zh="邮箱" data-en="Email">邮箱</a>
+        </nav>
       </div>
       <aside class="avatar-panel" aria-label="头像区域">
         <div class="avatar-frame">
@@ -61,11 +67,21 @@
         <p
           class="avatar-caption"
           data-i18n="avatar-caption"
-          data-zh="描述保留，链接稍后补充。"
-          data-en="Description stays for now. Links will be added later."
-        >描述保留，链接稍后补充。</p>
+          data-zh="保持热情。"
+          data-en="Stay passionate."
+        >保持热情。</p>
       </aside>
     </section>
+    <section class="recent-posts" aria-labelledby="recent-heading">
+      <div class="section-heading">
+        <h2 id="recent-heading" data-i18n data-zh="最近文章" data-en="Recent posts">最近文章</h2>
+        <a href="./blog/" data-i18n data-zh="全部文章 →" data-en="All posts →">全部文章 →</a>
+      </div>
+      <!-- RECENT_POSTS -->
+      <p class="empty-state" data-i18n data-zh="文章整理中，写好后会放在这里。" data-en="I'm putting my notes together. New posts will appear here.">文章整理中，写好后会放在这里。</p>
+      <!-- /RECENT_POSTS -->
+    </section>
+    </div>
   </main>
   <script src="./script.js"></script>
 </body>
