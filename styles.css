@@ -137,6 +137,13 @@ h1 {
   color: #22201f;
 }
 
+.intro-copy .usage-note {
+  margin-top: -10px;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
 .avatar-panel {
   display: grid;
   align-content: center;
