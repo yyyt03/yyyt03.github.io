@@ -30,7 +30,11 @@ for (const filename of await readdir(path.join(root, "content/posts"))) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || Number.isNaN(Date.parse(date)) || new Date(date).toISOString().slice(0, 10) !== date) {
     throw new Error(`${filename}: date must be a valid YYYY-MM-DD date.`);
   }
-  posts.push({ slug, title: data.title, titleEn: data.title_en || data.title, date, content });
+  const tags = data.tags ?? [];
+  if (!Array.isArray(tags) || tags.some((tag) => typeof tag !== "string" || !tag.trim())) {
+    throw new Error(`${filename}: tags must be an array of non-empty strings.`);
+  }
+  posts.push({ slug, title: data.title, titleEn: data.title_en || data.title, date, content, tags });
 }
 posts.sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
 
@@ -76,8 +80,7 @@ await cp(path.join(root, "public"), output, { recursive: true });
 for (const filename of ["styles.css", "script.js"]) await cp(path.join(root, filename), path.join(output, filename));
 const homepage = (await readFile(path.join(root, "index.html"), "utf8"))
   .replace('<link rel="stylesheet" href="./styles.css">', () => `<style>${stylesheet}</style>`)
-  .replace('src="./script.js"', `src="/script.js?v=${assetVersion}"`)
-  .replace(/<!-- RECENT_POSTS -->[\s\S]*?<!-- \/RECENT_POSTS -->/, posts.length ? postList(posts.slice(0, 3), "./blog/") : "");
+  .replace('src="./script.js"', `src="/script.js?v=${assetVersion}"`);
 await writeFile(path.join(output, "index.html"), homepage);
 await writeFile(path.join(output, ".nojekyll"), "");
 await writeFile(path.join(output, "blog/index.html"), document({
@@ -91,7 +94,7 @@ for (const post of posts) {
   await writeFile(path.join(directory, "index.html"), document({
     title: post.title, titleEn: post.titleEn, prefix: "../../",
     content: `<article class="article-card">
-      <header class="blog-header">${bilingual("h1", post.title, post.titleEn)}<time class="post-date" datetime="${post.date}">${post.date}</time></header>
+      <header class="blog-header">${bilingual("h1", post.title, post.titleEn)}<div class="post-meta"><time class="post-date" datetime="${post.date}">${post.date}</time>${post.tags.map((tag) => `<span class="post-tag">${escape(tag)}</span>`).join("")}</div></header>
       <div class="article-body">${marked.parse(post.content)}</div>
       <footer class="article-footer">${bilingual("a", "← 全部文章", "← All posts", 'href="../"')}</footer>
     </article>`,
