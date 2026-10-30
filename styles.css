@@ -175,7 +175,9 @@ h1 {
 }
 
 .profile-links { display: flex; flex-wrap: wrap; gap: 24px; font-size: 0.95rem; }
-.profile-links a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+.profile-links a, .profile-email { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+.profile-email { min-width: 0; }
+.profile-email > span { overflow-wrap: anywhere; }
 .profile-links a:hover span { text-decoration: underline; }
 .link-icon { display: block; width: 18px; height: 18px; flex: 0 0 auto; }
 .recent-posts { padding: 36px 4px 0; }
