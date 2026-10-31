@@ -67,3 +67,43 @@ try {
   savedLanguage = "zh";
 }
 setLanguage(savedLanguage || "zh");
+
+const tocLinks = [...document.querySelectorAll(".article-toc a[data-section]")];
+if (tocLinks.length) {
+  const sections = tocLinks.map((link) => document.getElementById(link.dataset.section));
+  const disclosure = document.querySelector(".toc-disclosure");
+  const compactLayout = window.matchMedia("(max-width: 1100px)");
+  const syncDisclosure = () => { disclosure.open = !compactLayout.matches; };
+  syncDisclosure();
+  compactLayout.addEventListener("change", syncDisclosure);
+
+  let scheduled = false;
+  function updateCurrentSection() {
+    scheduled = false;
+    let current = 0;
+    const threshold = Math.min(180, window.innerHeight * 0.25);
+    sections.forEach((section, index) => {
+      if (section.getBoundingClientRect().top <= threshold) current = index;
+    });
+    if (Math.ceil(window.scrollY + window.innerHeight) >= document.documentElement.scrollHeight - 2) {
+      current = sections.length - 1;
+    }
+    tocLinks.forEach((link, index) => {
+      if (index === current) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
+  }
+  function scheduleSectionUpdate() {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(updateCurrentSection);
+  }
+  window.addEventListener("scroll", scheduleSectionUpdate, { passive: true });
+  window.addEventListener("resize", scheduleSectionUpdate);
+  window.addEventListener("hashchange", scheduleSectionUpdate);
+  window.addEventListener("load", scheduleSectionUpdate);
+  tocLinks.forEach((link) => link.addEventListener("click", () => {
+    if (compactLayout.matches) disclosure.open = false;
+  }));
+  scheduleSectionUpdate();
+}

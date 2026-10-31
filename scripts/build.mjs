@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
 import matter from "gray-matter";
-import { marked } from "marked";
+import { renderArticle } from "./render-article.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const output = path.join(root, "dist");
@@ -49,7 +49,7 @@ const switcher = `<div class="language-switch" aria-label="Language switch">
   <button class="language-option" type="button" data-lang-button="en" aria-pressed="false">EN</button>
 </div>`;
 
-function document({ title, titleEn, prefix, content, listing = false }) {
+function document({ title, titleEn, prefix, content, listing = false, hasToc = false }) {
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -60,7 +60,7 @@ function document({ title, titleEn, prefix, content, listing = false }) {
   <style>${stylesheet}</style>
 </head>
 <body class="blog-page" data-language="zh">
-  <main class="blog-shell">
+  <main class="blog-shell${hasToc ? " has-article-toc" : ""}">
     <nav class="blog-nav" aria-label="Navigation">
       <a href="${prefix}"><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 5-7 7 7 7M5 12h14"/></svg>${bilingual("span", "首页", "Home")}</a>
       ${listing ? "" : bilingual("a", "博客", "Blog", `href="${prefix}blog/"`)}
@@ -91,14 +91,22 @@ await writeFile(path.join(output, "blog/index.html"), document({
 
 for (const post of posts) {
   const directory = path.join(output, "blog", post.slug);
+  const article = renderArticle(post.content);
+  const hasToc = article.headings.length > 0;
+  const toc = hasToc ? `<aside class="article-toc">
+    <details class="toc-disclosure" open>
+      <summary><svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>${bilingual("span", "阅读目录", "Contents")}<svg class="toc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <nav aria-label="Table of contents"><ol>${article.headings.map((heading) => `<li><a href="#${heading.id}" data-section="${heading.id}" data-depth="${heading.depth}">${escape(heading.text)}</a></li>`).join("")}</ol></nav>
+    </details>
+  </aside>` : "";
   await mkdir(directory, { recursive: true });
   await writeFile(path.join(directory, "index.html"), document({
-    title: post.title, titleEn: post.titleEn, prefix: "../../",
-    content: `<article class="article-card">
+    title: post.title, titleEn: post.titleEn, prefix: "../../", hasToc,
+    content: `${hasToc ? `<div class="article-layout">${toc}` : ""}<article class="article-card">
       <header class="blog-header">${bilingual("h1", post.title, post.titleEn)}<div class="post-meta"><time class="post-date" datetime="${post.date}">${post.date}</time>${post.tags.map((tag) => `<span class="post-tag">${escape(tag)}</span>`).join("")}</div></header>
-      <div class="article-body">${marked.parse(post.content)}</div>
+      <div class="article-body">${article.html}</div>
       <footer class="article-footer">${bilingual("a", "← 全部文章", "← All posts", 'href="../"')}</footer>
-    </article>`,
+    </article>${hasToc ? "</div>" : ""}`,
   }));
 }
 console.log(`Built homepage, blog index, and ${posts.length} published post(s) in dist/.`);
