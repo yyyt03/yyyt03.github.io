@@ -336,4 +336,7 @@ h1 {
   .flow-row { gap: 6px; }
   .flow-step { padding: 10px 5px; font-size: 0.82rem; }
   .flow-arrow { font-size: 0.9rem; }
+  .lifecycle-flow { flex-direction: column; }
+  .lifecycle-flow .flow-step { flex: auto; min-height: 42px; padding: 8px; }
+  .lifecycle-flow .flow-arrow { line-height: 1; transform: rotate(90deg); }
 }

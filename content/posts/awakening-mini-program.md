@@ -8,6 +8,10 @@ tags: [AIGC]
 
 2025 年 7 月至 9 月，我在课余时间使用 Cursor 辅助开发并运营了微信小程序「觉醒天赋推荐」，为《王者荣耀》觉醒之战玩家提供天赋、出装与打法的组合参考。这是一次由我独立完成需求梳理、开发、测试、发布和运营的产品实践。
 
+<figure class="flow-figure" aria-label="产品实践流程：需求梳理、开发、测试、发布、运营">
+  <div class="flow-row lifecycle-flow"><span class="flow-step">需求梳理</span><span class="flow-arrow" aria-hidden="true">→</span><span class="flow-step">开发</span><span class="flow-arrow" aria-hidden="true">→</span><span class="flow-step">测试</span><span class="flow-arrow" aria-hidden="true">→</span><span class="flow-step">发布</span><span class="flow-arrow" aria-hidden="true">→</span><span class="flow-step">运营</span></div>
+</figure>
+
 ## 背景：限时玩法里的攻略需求
 
 作为觉醒之战的核心玩家，我经常需要在玩法开放时快速查找英雄搭配。但相关攻略分散在不同平台，天赋选择、装备顺序和打法思路需要来回查找，手机上也缺少便于组合查询的结构化工具。
