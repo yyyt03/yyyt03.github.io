@@ -6,7 +6,7 @@ draft: false
 tags: [AIGC]
 ---
 
-2025 年 7 月至 9 月，我在课余时间独立开发并运营了微信小程序「觉醒天赋推荐」，为《王者荣耀》觉醒之战玩家提供天赋、出装与打法的组合参考。借助 Cursor 辅助编程，我完成了从需求、开发到上线运营的全过程。
+2025 年 7 月至 9 月，我在课余时间使用 Cursor 辅助开发并运营了微信小程序「觉醒天赋推荐」，为《王者荣耀》觉醒之战玩家提供天赋、出装与打法的组合参考。这是一次由我独立完成需求梳理、开发、测试、发布和运营的产品实践。
 
 ## 背景：限时玩法里的攻略需求
 
@@ -16,7 +16,12 @@ tags: [AIGC]
 
 ## 目标：独立跑通产品闭环
 
-作为唯一的开发者，我负责需求梳理、页面设计、前后端实现、测试、发布与内容维护。目标是在有限时间内，以较低的试错成本跑通 **“玩家查攻略 → 玩家创攻略 → 审核发布”** 的完整链路，同时验证 Cursor 如何帮助一个人交付可用产品。
+作为唯一的开发者，我负责需求梳理、页面设计、前后端实现、测试、发布与内容维护。目标是在有限时间内，以较低的试错成本跑通玩家查询、创作和审核发布的完整链路，同时验证 Cursor 如何帮助一个人交付可用产品。
+
+<figure class="flow-figure" aria-label="产品闭环：查攻略、创攻略、审核发布，发布的内容进入方案库供玩家查询">
+  <div class="flow-row"><span class="flow-step">查攻略</span><span class="flow-arrow" aria-hidden="true">→</span><span class="flow-step">创攻略</span><span class="flow-arrow" aria-hidden="true">→</span><span class="flow-step">审核发布</span></div>
+  <figcaption>发布的方案进入方案库，供玩家继续查询与参考</figcaption>
+</figure>
 
 首页围绕使用目的提供全部方案、英雄分类、体验服方案和方案创作入口，让查询与投稿都能直接开始。
 
@@ -43,6 +48,13 @@ tags: [AIGC]
 </div>
 
 用户提交方案后进入待审状态（`pending`），管理页面支持预览、编辑、通过发布、退回和下架。退回时保存原因，帮助投稿者继续修改。这套状态流转将内容创作与审核发布连接起来，也让我能在单人维护的情况下管理持续新增的方案。
+
+<figure class="flow-figure" aria-label="审核流程：提交方案进入待审核，通过后发布；未通过则记录原因并退回，修改提交后返回待审">
+  <div class="flow-row"><span class="flow-step">提交方案</span><span class="flow-arrow" aria-hidden="true">→</span><span class="flow-step">待审核</span><span class="flow-arrow" aria-hidden="true">→</span><span class="flow-step">通过发布</span></div>
+  <span class="flow-branch-label">↓ 待审未通过时</span>
+  <div class="flow-row is-return"><span class="flow-step">退回留痕</span><span class="flow-arrow" aria-hidden="true">→</span><span class="flow-step">修改提交</span><span class="flow-arrow" aria-hidden="true">→</span><span class="flow-step">返回待审</span></div>
+  <figcaption>退回时记录原因，修改后重新进入审核流程</figcaption>
+</figure>
 
 <div class="project-gallery moderation-gallery">
   <figure><a class="screenshot-crop user-center-crop" href="/images/awakening-mini-program/moderation.jpg"><img src="/images/awakening-mini-program/moderation.jpg" alt="用户中心：我的方案、收藏方案、方案管理与创作入口" width="948" height="6251" loading="lazy"></a><figcaption>用户中心：方案与收藏入口</figcaption></figure>
@@ -76,6 +88,6 @@ tags: [AIGC]
 
 2025 年 9 月，研一开学后，课程与学习安排占用了更多精力，我选择下架小程序并停止维护。项目周期从 7 月到 9 月，完整覆盖了需求分析、设计开发、测试发布与上线运营。
 
-这次实践锻炼了我独立推进项目、拆解问题和根据反馈迭代的能力，也让我形成了更具体的产品意识：既要把功能做出来，也要让查询、投稿、审核与维护形成闭环。Cursor 帮助我加快实现，而需求判断、代码质量和最终交付由我负责。
+如今回看，这个项目最有价值的地方，是我借助 AI 把一个具体想法做成了有人使用的产品，并在真实反馈中继续迭代。
 
 [查看项目源码与 README →](https://github.com/yyyt03/timiTest1)
